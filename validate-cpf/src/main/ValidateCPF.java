@@ -20,23 +20,31 @@ public class ValidateCPF {
 			sum = sum + (Integer.parseInt(cpfAsArray[i]) * (10 - i)); 
 		}
 		
-		int firstChecker = 11 - (sum % 11);
-		System.out.println(" First checker: " + firstChecker);
+		Integer firstChecker = 11 - (sum % 11);
 		firstChecker = firstChecker == 11 || firstChecker == 10 ? 0 : firstChecker;
-		System.out.println("Sum first: "+ sum + "| First checker: " + firstChecker);
 		
-		sum = 0;
-		
-		for (int i = 0; i < 10; i++) {
-			sum = sum + (Integer.parseInt(cpfAsArray[i]) * (11 - i)); 
+		if (firstChecker.toString().equals(cpfAsArray[9])) {
+			System.out.println("First checker: " + firstChecker);
+			
+			sum = 0;
+			
+			for (int i = 0; i < 10; i++) {
+				sum = sum + (Integer.parseInt(cpfAsArray[i]) * (11 - i)); 
+			}
+			
+			Integer secondChecker = 11 - (sum % 11);
+			secondChecker = secondChecker == 11 || secondChecker == 10 ? 0 : secondChecker;
+			
+			if (secondChecker.toString().equals(cpfAsArray[10])) {
+				System.out.println("Second: " + secondChecker);
+			}
+			else {
+				System.out.println("Error second ckecker");
+			}
 		}
-		
-		System.out.println();
-		
-		int secondChecker = 11 - (sum % 11);
-		System.out.println("Second: " + secondChecker);
-		secondChecker = secondChecker == 11 || secondChecker == 10 ? 0 : secondChecker;
-		System.out.println("Sum: "+ sum + "| Second checker: " + secondChecker);
+		else {
+			System.out.println("Error fist ckecker");
+		}
 		
 		//cpf test 53421773750 81763554880 23813481077 91983221503 48010394483 18342178730
 	}
