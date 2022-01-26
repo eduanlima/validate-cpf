@@ -13,6 +13,8 @@ public class ValidateCPF {
 		System.out.println("Insert your CPF: ");
 		cpf = Long.parseLong(scanner.next());
 		
+		scanner.close();
+		
 		String[] cpfAsArray = cpf.toString().split("");
 		int sum = 0;
 		
@@ -24,7 +26,6 @@ public class ValidateCPF {
 		firstChecker = firstChecker == 11 || firstChecker == 10 ? 0 : firstChecker;
 		
 		if (firstChecker.toString().equals(cpfAsArray[9])) {
-			System.out.println("First checker: " + firstChecker);
 			
 			sum = 0;
 			
@@ -36,17 +37,16 @@ public class ValidateCPF {
 			secondChecker = secondChecker == 11 || secondChecker == 10 ? 0 : secondChecker;
 			
 			if (secondChecker.toString().equals(cpfAsArray[10])) {
-				System.out.println("Second: " + secondChecker);
+				System.out.println("CPF is valid.");
 			}
 			else {
-				System.out.println("Error second ckecker");
+				System.out.println("CPF is not valid.");
 			}
 		}
 		else {
-			System.out.println("Error fist ckecker");
+			System.out.println("CPF is not valid.");
 		}
-		
-		//cpf test 53421773750 81763554880 23813481077 91983221503 48010394483 18342178730
 	}
-
 }
+
+//cpf test 53421773750 81763554880 23813481077 91983221503 48010394483 18342178730
